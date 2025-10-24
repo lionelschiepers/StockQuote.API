@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace MinimalAPIService.IntegrationTests
+namespace StockQuote.IntegrationTests;
+
+public class CustomWebApplicationFactory<TProgram>
+    : WebApplicationFactory<TProgram> where TProgram : class
 {
-    public class CustomWebApplicationFactory<TProgram>
-        : WebApplicationFactory<TProgram> where TProgram : class
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
-        protected override void ConfigureWebHost(IWebHostBuilder builder)
+        ArgumentNullException.ThrowIfNull(builder);
+
+        builder.ConfigureServices(services =>
         {
-            ArgumentNullException.ThrowIfNull(builder);
+        });
 
-            builder.ConfigureServices(services =>
-            {
-            });
-
-            builder.UseEnvironment("Development");
-        }
+        builder.UseEnvironment("Development");
     }
 }

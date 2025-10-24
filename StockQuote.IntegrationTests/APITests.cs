@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 
-namespace MinimalAPIService.IntegrationTests;
+namespace StockQuote.IntegrationTests;
 
 public class APITests(CustomWebApplicationFactory<Program> _factory) :
     IClassFixture<CustomWebApplicationFactory<Program>>

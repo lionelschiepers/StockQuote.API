@@ -3,7 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
-  <!-- transitive pinned packages -->
+  <!-- transitive pinned packages https://blog.ostebaronen.dk/2024/11/transitive-pinning.html -->
   <ItemGroup>
     <!-- https://github.com/advisories/GHSA-w7r3-mgwf-4mqq -->
     <PackageVersion Include="KubernetesClient" Version="17.0.14" />
