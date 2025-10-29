@@ -6,7 +6,11 @@
   <!-- transitive pinned packages https://blog.ostebaronen.dk/2024/11/transitive-pinning.html -->
   <ItemGroup>
     <!-- https://github.com/advisories/GHSA-w7r3-mgwf-4mqq -->
+    <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.11" />
+    <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.11" />
+    <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.11" />
     <PackageVersion Include="KubernetesClient" Version="17.0.14" />
+    <PackageVersion Include="YahooFinanceApi" Version="2.3.3" />
   </ItemGroup>
   <ItemGroup>
     <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />

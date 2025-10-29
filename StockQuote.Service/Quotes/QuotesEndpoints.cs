@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using System.Text.Json;
+using YahooFinanceApi;
 
-namespace MinimalAPIService.HelloWorld
+namespace StockQuote.Service.Quotes
 {
-    public static class HelloWorldAPI
+    public static class QuotesEndpoints
     {
         private static readonly JsonSerializerOptions _jsonOptions = new()
         {
@@ -12,7 +13,7 @@ namespace MinimalAPIService.HelloWorld
 
         public sealed class GetRequest : IRequest<Response>
         {
-            public static readonly GetRequest Empty = new GetRequest();
+            public static readonly GetRequest Empty = new();
         }
 
         public sealed class Response
@@ -22,7 +23,7 @@ namespace MinimalAPIService.HelloWorld
 
         public static void Register(WebApplication app)
         {
-            app.MapGet("/helloworld", async (IRequestHandler<GetRequest, Response> handler, CancellationToken cancellationToken) =>
+            app.MapGet("/quote", async (IRequestHandler<GetRequest, Response> handler, CancellationToken cancellationToken) =>
             {
                 var response = await handler.Handle(GetRequest.Empty, cancellationToken);
                 return TypedResults.Json(response, _jsonOptions);
@@ -35,9 +36,13 @@ namespace MinimalAPIService.HelloWorld
         {
             public async Task<Response> Handle(GetRequest content, CancellationToken cancellationToken)
             {
+                var securities = await Yahoo.Symbols("AAPL", "GOOG").Fields(Field.Symbol, Field.RegularMarketPrice, Field.FiftyTwoWeekHigh).QueryAsync(cancellationToken);
+                var aapl = securities["AAPL"];
+                var price = aapl[Field.RegularMarketPrice];
+
                 return new Response()
                 {
-                    Message = "Hello, World!"
+                    Message = $"{aapl.Symbol} = {price}"
                 };
             }
         }

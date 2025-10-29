@@ -1,0 +1,7 @@
+query
+{
+     quote(ticker: "MSFT")
+     {
+        ticker
+     }
+}

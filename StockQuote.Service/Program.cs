@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using MinimalAPIService;
-using MinimalAPIService.HelloWorld;
 using Scalar.AspNetCore;
 using Serilog;
+using StockQuote.Service;
+using StockQuote.Service.Quotes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +53,8 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 
 builder.Services.ConfigureHealthChecks();
 
+builder.AddGraphQL().AddTypes();
+
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
@@ -61,7 +63,11 @@ app.UseSecurityHeaders(policies => policies
     .AddDefaultApiSecurityHeaders()
     .AddPermissionsPolicyWithDefaultSecureDirectives()
     // Adjust CSP for Developper Exception Page
-    .AddContentSecurityPolicy(configure => configure.AddScriptSrc().Self().UnsafeInline()));
+    .AddContentSecurityPolicy(configure => configure.AddScriptSrc().Self()
+    // for health checks ui
+    .UnsafeInline()
+    // for hotchocolate ui
+    .UnsafeEval()));
 
 app.UseResponseCompression();
 
@@ -103,7 +109,7 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference(options =>
     {
         options
-            .WithTitle("Minimal API Service")
+            .WithTitle("StockQuote API")
             .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
             .WithTheme(ScalarTheme.Saturn)
             .EnableDarkMode();
@@ -127,9 +133,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-HelloWorldAPI.Register(app);
+QuotesEndpoints.Register(app);
 
-await app.RunAsync();
+app.MapGraphQL("/graphql");
+
+await app.RunWithGraphQLCommandsAsync(args);
 
 // Make the implicit Program class public so test projects can access it
 #pragma warning disable S1118 // Utility classes should not have public constructors
