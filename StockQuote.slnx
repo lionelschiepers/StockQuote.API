@@ -8,5 +8,7 @@
     <File Path="README.md" />
   </Folder>
   <Project Path="StockQuote.IntegrationTests/StockQuote.IntegrationTests.csproj" />
+  <Project Path="StockQuote.Primitives/StockQuote.Primitives.csproj" Id="9aac3973-afb2-4d25-b9e6-a2df06247a57" />
   <Project Path="StockQuote.Service/StockQuote.Service.csproj" />
+  <Project Path="StockQuote.StockUnlock/StockQuote.StockUnlock.csproj" Id="1dea1846-9206-49cf-b2f8-58f8f992aae7" />
 </Solution>
