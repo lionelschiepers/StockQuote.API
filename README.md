@@ -1,14 +1,17 @@
 # StockQuote API - .NET 9.0 Minimal API
 
-This project demonstrates a simple Minimal API using .NET 9.0.\
-It integrates:
-- Swagger/OpenAPI for API documentation and testing
-- Scalar for interactive API exploration
-- Health checks for monitoring the application's status.
-- Application Insights for telemetry and logging.
-- Serilog for structured logging.
-- Security headers for enhanced security.
-- New slnx Visual Studio solution format.
+This project is a playground to rewrite the project ReactStockQuote.
+ReactStockQute has been written many years ago but the tooling based on
+react-scripts is obsolete because it is no more maintained.
+
+Ideas for this playground:
+1. rewrite ReactStockQuote with React 19.2 and next.js (still using SPA)
+2. Write a blazor app to learn it.
+3. Multi providers framework. The current implementation is limited to Yahoo
+   Finance API. Other provider could be used like StockUnlock.
+4. Develop a GraphQL API using hotchocolate. 
+5. Calculate technical indicators (SMA, EMA, MACD, RSI, Bollinger Bands, etc.)
+
 
 # Author
 Lionel Schiepers
