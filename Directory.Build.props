@@ -10,7 +10,11 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-  </PropertyGroup>
+
+    <!-- Configure NuGet auditing. -->
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAudit>false</NuGetAudit>
+</PropertyGroup>
 
   <ItemGroup Condition="'$(MSBuildProjectExtension)' != '.dcproj'">
     <PackageReference Include="SonarAnalyzer.CSharp">

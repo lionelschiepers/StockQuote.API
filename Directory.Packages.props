@@ -6,13 +6,14 @@
   <!-- transitive pinned packages https://blog.ostebaronen.dk/2024/11/transitive-pinning.html -->
   <ItemGroup>
     <!-- https://github.com/advisories/GHSA-w7r3-mgwf-4mqq -->
+    <PackageVersion Include="KubernetesClient" Version="17.0.14" />
+    <PackageVersion Include="IdentityModel" Version="5.2.0" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.11" />
     <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.11" />
     <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.11" />
-    <PackageVersion Include="KubernetesClient" Version="17.0.14" />
     <PackageVersion Include="YahooFinanceApi" Version="2.3.3" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
@@ -25,17 +26,17 @@
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="6.1.1" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
-    <PackageVersion Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.2.0" />
-    <PackageVersion Include="Scalar.AspNetCore" Version="2.10.3" />
+    <PackageVersion Include="NetEscapades.AspNetCore.SecurityHeaders" Version="1.3.0" />
+    <PackageVersion Include="Scalar.AspNetCore" Version="2.11.0" />
     <PackageVersion Include="Serilog" Version="4.3.0" />
-    <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageVersion Include="Serilog.Expressions" Version="5.0.0" />
     <PackageVersion Include="Serilog.Formatting.Compact" Version="3.0.0" />
     <PackageVersion Include="Serilog.Sinks.ApplicationInsights" Version="4.1.0" />
     <PackageVersion Include="Serilog.Sinks.Console" Version="6.1.1" />
     <PackageVersion Include="Serilog.Sinks.File" Version="7.0.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
-    <PackageVersion Include="xunit.v3" Version="3.2.0" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
+    <PackageVersion Include="xunit.v3" Version="3.2.1" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.16.1.129956" />
   </ItemGroup>
 </Project>

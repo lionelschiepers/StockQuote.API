@@ -51,13 +51,17 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
     options.SerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
 });
 
+/*
 builder.Services.ConfigureHealthChecks();
+*/
 
 builder.AddGraphQL().AddTypes();
 
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
+
+app.UseResponseCompression();
 
 app.UseSecurityHeaders(policies => policies
     .AddDefaultApiSecurityHeaders()
@@ -68,8 +72,6 @@ app.UseSecurityHeaders(policies => policies
     .UnsafeInline()
     // for hotchocolate ui
     .UnsafeEval()));
-
-app.UseResponseCompression();
 
 if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
@@ -84,13 +86,14 @@ else
                 await httpContext.Response.WriteAsync("Fallback: An error occurred.");
         });
     });
+    app.UseHsts();
 }
 
 app.UseStatusCodePages(async statusCodeContext
     => await Results
         .Problem(statusCode: statusCodeContext.HttpContext.Response.StatusCode)
         .ExecuteAsync(statusCodeContext.HttpContext));
-
+/*
 app.MapHealthChecks("/health", new HealthCheckOptions()
 {
     Predicate = _ => true,
@@ -101,6 +104,7 @@ app.UseHealthChecksUI(options =>
 {
     options.UIPath = "/health-ui";
 });
+*/
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -133,7 +137,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-QuotesEndpoints.Register(app);
+ExchangeRatesEndpoints.Register(app);
 
 app.MapGraphQL("/graphql");
 
