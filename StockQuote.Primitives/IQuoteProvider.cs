@@ -8,6 +8,6 @@ namespace StockQuote.Primitives
 {
     public interface IQuoteProvider
     {
-        IQuote GetQuote(string ticker);
+        Task<IQuote?> GetQuoteAsync(string ticker);
     }
 }

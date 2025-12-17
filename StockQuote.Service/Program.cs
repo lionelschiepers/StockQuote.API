@@ -3,6 +3,8 @@ using Scalar.AspNetCore;
 using Serilog;
 using StockQuote.Service;
 using StockQuote.Service.Quotes;
+using StockQuote.Primitives;
+using StockQuote;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +56,8 @@ builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =
 /*
 builder.Services.ConfigureHealthChecks();
 */
+
+builder.Services.AddSingleton<IQuoteProvider, StockUnlockProvider>();
 
 builder.AddGraphQL().AddTypes();
 

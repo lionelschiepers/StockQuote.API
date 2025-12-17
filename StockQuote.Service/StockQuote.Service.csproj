@@ -32,4 +32,8 @@
     <PackageReference Include="YahooFinanceApi" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StockQuote.StockUnlock\StockQuote.StockUnlock.csproj" />
+  </ItemGroup>
+
 </Project>

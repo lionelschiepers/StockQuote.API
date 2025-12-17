@@ -10,15 +10,15 @@ namespace StockQuote
 
     public sealed class StockUnlockProvider : IQuoteProvider
     {
-        public IQuote GetQuote(string ticker)
+        public Task<IQuote?> GetQuoteAsync(string ticker)
         {
             ArgumentNullException.ThrowIfNull(ticker);
 
-            return new StockUnlockQuote
+            return Task.FromResult<IQuote?>(new StockUnlockQuote
             {
                 Time = DateOnly.FromDateTime(DateTime.Today),
                 Close = 0
-            };
+            });
         }
     }
 }
