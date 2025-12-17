@@ -1,4 +1,4 @@
-# StockQuote API - .NET 9.0 Minimal API
+# StockQuote API - .NET 10.0 Minimal API
 
 This project is a playground to rewrite the project ReactStockQuote.
 ReactStockQute has been written many years ago but the tooling based on
