@@ -5,6 +5,8 @@ using StockQuote.Service;
 using StockQuote.Service.Quotes;
 using StockQuote.Primitives;
 using StockQuote;
+using StockQuote.StockUnlock;
+using StockQuote.Service.ExchangeRates;
 
 var builder = WebApplication.CreateBuilder(args);
 

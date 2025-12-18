@@ -1,6 +1,6 @@
 ﻿using StockQuote.Primitives;
 
-namespace StockQuote
+namespace StockQuote.StockUnlock
 {
     public sealed class StockUnlockQuote : IQuote
     {

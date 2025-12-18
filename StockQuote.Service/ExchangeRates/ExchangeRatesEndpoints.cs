@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using System.Text.Json;
-using YahooFinanceApi;
 
-namespace StockQuote.Service.Quotes
+
+namespace StockQuote.Service.ExchangeRates
 {
     public static class ExchangeRatesEndpoints
     {
